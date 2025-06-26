@@ -5,7 +5,7 @@ import urllib.parse
 
 load_dotenv()
 RIOT_API_KEY = os.getenv("RIOT_API_KEY")
-HEADERS = {"X-Riot-Token": "RGAPI-62cd5ad0-52e1-4c8b-852d-4988929b8a2f"}
+HEADERS = {"X-Riot-Token": "RGAPI-b4245b8c-00fb-4bca-bd86-da1dbcb20849"}
 
 
 def get_account_by_riot_id(game_name, tag_line):
@@ -45,4 +45,12 @@ def get_match_data(match_id):
     if r.status_code != 200:
         print(f"Erreur MatchDetail ({r.status_code}) → {r.text}")
         return None
+    return r.json()
+
+def get_league_by_summoner_id(summoner_id):
+    url = f"https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/{summoner_id}"
+    r = requests.get(url, headers=HEADERS)
+    if r.status_code != 200:
+        print(f"Erreur LeagueEntry ({r.status_code}) → {r.text}")
+        return []
     return r.json()
