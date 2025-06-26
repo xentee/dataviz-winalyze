@@ -5,7 +5,7 @@ import urllib.parse
 
 load_dotenv()
 RIOT_API_KEY = os.getenv("RIOT_API_KEY")
-HEADERS = {"X-Riot-Token": RIOT_API_KEY}
+HEADERS = {"X-Riot-Token": "RGAPI-62cd5ad0-52e1-4c8b-852d-4988929b8a2f"}
 
 
 def get_account_by_riot_id(game_name, tag_line):
